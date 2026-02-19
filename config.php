@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'version'    => '1.4.0',
+    'version'    => '1.4.1',
     'site_title' => 'Domain List',
     'owner'      => 'Fabian Ternis',
 
@@ -40,32 +40,32 @@ return [
     'domains' => [
 
         'xp-craft.de' => [
-            'from' => null, 'to' => null, 'status' => 'expired',
-            'description' => null, 'note' => null, 'github_url' => null,
+            'from' => '2024-06-28', 'to' => '2025-07-01', 'status' => 'expired',
+            'description' => 'XP-Craft.de Minecraft Servernetwork', 'note' => null, 'github_url' => null,
             'owner' => null, 'github_owner' => null, 'subdomains' => null,
         ],
         'darkangel-mc.de' => [
-            'from' => null, 'to' => null, 'status' => 'expired',
+            'from' => '2024-08-05', 'to' => '2025-08-05', 'status' => 'expired',
             'description' => null, 'note' => null, 'github_url' => null,
             'owner' => null, 'github_owner' => null, 'subdomains' => null,
         ],
         'xp-host.de' => [
-            'from' => null, 'to' => null, 'status' => 'expired',
+            'from' => '2024-10-09', 'to' => '2025-10-09', 'status' => 'expired',
             'description' => null, 'note' => null, 'github_url' => null,
             'owner' => null, 'github_owner' => null, 'subdomains' => null,
         ],
         'ebay-konto.de' => [
-            'from' => null, 'to' => null, 'status' => 'expired',
+            'from' => '2024-10-09', 'to' => '2025-10-09', 'status' => 'expired',
             'description' => null, 'note' => null, 'github_url' => null,
             'owner' => null, 'github_owner' => null, 'subdomains' => null,
         ],
         'citycraft-nw.de' => [
-            'from' => null, 'to' => null, 'status' => 'expired',
+            'from' => '2024-10-23', 'to' => '2025-10-23', 'status' => 'expired',
             'description' => null, 'note' => null, 'github_url' => null,
             'owner' => null, 'github_owner' => null, 'subdomains' => null,
         ],
         'mail-free.de' => [
-            'from' => null, 'to' => null, 'status' => 'expired',
+            'from' => '2024-11-29', 'to' => '2025-11-29', 'status' => 'expired',
             'description' => null, 'note' => null, 'github_url' => null,
             'owner' => null, 'github_owner' => null, 'subdomains' => null,
         ],
