@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'version'    => '1.3.0',
+    'version'    => '1.4.0',
     'site_title' => 'Domain List',
     'owner'      => 'Fabian Ternis',
 
@@ -14,17 +14,26 @@ return [
     |   'to'           => 'YYYY-MM-DD' | null   (null = Present)
     |   'status'       => 'active' | 'expired'
     |   'description'  => string | null
-    |   'note'         => string | null          short annotation / badge
-    |   'github_url'   => string | null          repo or org URL
+    |   'note'         => string | null
+    |   'github_url'   => string | null
     |   'owner'        => string | null          if different from site owner
     |   'github_owner' => string | null          GitHub profile URL of the owner
-    |   'subdomains'   => array  | null          list of subdomain entries:
+    |   'subdomains'   => array | null           keyed by subdomain prefix, e.g.:
     |       [
-    |           'address'     => 'https://sub.domain.tld',
-    |           'name'        => 'Human-readable name',
-    |           'description' => 'What it does',
-    |           'github'      => 'https://github.com/org/repo',   // optional
-    |           'is_deployed' => true | false,
+    |           // key = subdomain prefix  →  https://{key}.{domain}
+    |           // use '@' for the apex/root itself
+    |           '@' => [
+    |               'name'        => string | null,
+    |               'description' => string | null,
+    |               'github'      => string | null,
+    |               'is_deployed' => bool,        // optional, default true
+    |           ],
+    |           'status' => [
+    |               'name'        => 'Status Page',
+    |               'description' => 'System status dashboard.',
+    |               'github'      => 'https://github.com/org/repo',
+    |               'is_deployed' => true,
+    |           ],
     |       ]
     */
 
@@ -449,50 +458,44 @@ return [
             'owner'        => 'MTEX-dev',
             'github_owner' => 'https://github.com/MTEX-dev',
             'subdomains'   => [
-                [
-                    'address'     => 'https://mtex.dev',
+                // key '@' = the apex domain itself (https://mtex.dev)
+                '@' => [
                     'name'        => 'Landingpage',
-                    'description' => 'Our main landingpage',
+                    'description' => 'Our main landingpage.',
                     'github'      => 'https://github.com/MTEDdotDev/static-landingpage',
                     'is_deployed' => true,
                 ],
-                [
-                    'address'     => 'https://index.mtex.dev',
+                'index' => [
                     'name'        => 'Service Index',
                     'description' => 'Central directory and manifest of all mtex.dev domains and nodes.',
                     'github'      => 'https://github.com/MTEDdotDev/index.mtex.dev',
                     'is_deployed' => true,
                 ],
-                [
-                    'address'     => 'https://legal.mtex.dev',
+                'legal' => [
                     'name'        => 'Legal Center',
                     'description' => 'Multilingual hub for imprint, privacy policies, and legal documentation.',
                     'github'      => 'https://github.com/MTEXdotDev/legal.mtex.dev',
                     'is_deployed' => true,
                 ],
-                [
-                    'address'     => 'https://tw.mtex.dev',
+                'tw' => [
                     'name'        => 'Tailwind Components Library',
                     'description' => 'Our TailwindCSS component library for rapid UI development.',
                     'github'      => 'https://github.com/MTEDdotDev/tw.mtex.dev',
                     'is_deployed' => true,
                 ],
-                [
-                    'address'     => 'https://nx.mtex.dev',
+                'nx' => [
                     'name'        => 'MTEX Nexus',
                     'description' => 'A lightweight JSON API gateway for seamless data exchange and rapid prototyping.',
                     'github'      => 'https://github.com/MTEDdotDev/nx.mtex.dev',
                     'is_deployed' => true,
                 ],
-                [
-                    'address'     => 'https://gh.mtex.dev',
-                    'name'        => 'MTEX GitHub Redirect',
+                'gh' => [
+                    'name'        => 'GitHub Redirect',
                     'description' => 'Redirects to the GitHub repos.',
                     'github'      => 'https://github.com/MTEDdotDev/gh.mtex.dev',
                     'is_deployed' => true,
                 ],
-                [
-                    'address'     => 'https://diff.mtex.dev',
+                'diff' => [
                     'name'        => 'MTEX Diff',
                     'description' => 'A visual comparison tool for JSON payloads and code.',
                     'github'      => 'https://github.com/MTEDdotDev/diff.mtex.dev',

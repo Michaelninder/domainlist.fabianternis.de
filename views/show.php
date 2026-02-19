@@ -1,6 +1,5 @@
 <?php
-// All variables + helpers injected from root index.php:
-// $currentDomain, $domains, $config, fmt(), statusBadge(), ghIcon(), extIcon(), arrowLeft(), home()
+// All variables + helpers injected from root index.php
 $d           = $domains[$currentDomain];
 $status      = $d['status']       ?? 'active';
 $from        = fmt($d['from']     ?? null);
@@ -8,13 +7,24 @@ $to          = $d['to']           ?? null;
 $desc        = $d['description']  ?? null;
 $note        = $d['note']         ?? null;
 $gh          = $d['github_url']   ?? null;
-$domainOwner = $d['owner']        ?? null;   // null = Fabian Ternis (site owner)
-$ghOwner     = $d['github_owner'] ?? null;   // GitHub URL of the domain owner
+$domainOwner = $d['owner']        ?? null;
+$ghOwner     = $d['github_owner'] ?? null;
 $subdomains  = $d['subdomains']   ?? null;
 
-// Resolve display owner
 $ownerLabel = $domainOwner ?? $config['owner'];
 $ownerIsMe  = ($domainOwner === null);
+
+// Helper: resolve a subdomain's full URL from its key + parent domain
+function subUrl(string $key, string $domain): string {
+    return $key === '@'
+        ? 'https://' . $domain
+        : 'https://' . $key . '.' . $domain;
+}
+function subUrlDisplay(string $key, string $domain): string {
+    return $key === '@'
+        ? $domain
+        : $key . '.' . $domain;
+}
 ?>
 
 <div class="detail">
@@ -25,7 +35,7 @@ $ownerIsMe  = ($domainOwner === null);
 
   <div class="detail-panel">
 
-    <!-- ── Top: name + status badge ──────────────────────────────────────── -->
+    <!-- ── Top ───────────────────────────────────────────────────────────── -->
     <div class="detail-top">
       <h1 class="detail-domain"><?= htmlspecialchars($currentDomain) ?></h1>
       <?= statusBadge($status) ?>
@@ -98,7 +108,7 @@ $ownerIsMe  = ($domainOwner === null);
     </div>
     <?php endif; ?>
 
-    <!-- ── GitHub (main repo / org) ──────────────────────────────────────── -->
+    <!-- ── GitHub ────────────────────────────────────────────────────────── -->
     <?php if ($gh): ?>
     <div class="detail-section">
       <div class="section-label">GitHub</div>
@@ -115,6 +125,7 @@ $ownerIsMe  = ($domainOwner === null);
   <!-- ── Subdomains ────────────────────────────────────────────────────────── -->
   <?php if (!empty($subdomains)): ?>
   <div class="subdomains-wrap">
+
     <h2 class="subdomains-title">
       <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24"
            fill="none" stroke="currentColor" stroke-width="2"
@@ -129,42 +140,57 @@ $ownerIsMe  = ($domainOwner === null);
 
     <div class="sub-table">
 
-      <!-- Table header -->
+      <!-- Header row -->
       <div class="sub-row sub-head">
+        <span class="sub-col col-prefix">Prefix</span>
         <span class="sub-col col-address">Address</span>
         <span class="sub-col col-name">Service</span>
         <span class="sub-col col-desc">Description</span>
         <span class="sub-col col-repo">Repo</span>
-        <span class="sub-col col-status">Live</span>
+        <span class="sub-col col-live">Live</span>
       </div>
 
-      <!-- Table rows -->
-      <?php foreach ($subdomains as $sub):
-        $isDeployed = $sub['is_deployed'] ?? false;
+      <!-- Data rows -->
+      <?php foreach ($subdomains as $prefix => $sub):
+        $isDeployed = $sub['is_deployed'] ?? true;
+        $fullUrl    = subUrl($prefix, $currentDomain);
+        $displayUrl    = subUrlDisplay($prefix, $currentDomain);
+        $subName    = $sub['name']        ?? null;
+        $subDesc    = $sub['description'] ?? null;
+        $subGh      = $sub['github']      ?? null;
+        // Derive slug from last segment of github URL
+        $ghSlug     = $subGh ? basename(rtrim($subGh, '/')) : null;
+        // Display prefix nicely
+        $prefixLabel = $prefix === '@' ? '@' : $prefix;
       ?>
       <div class="sub-row <?= $isDeployed ? 'deployed' : 'not-deployed' ?>">
 
+        <span class="sub-col col-prefix">
+          <code class="sub-prefix-code"><?= htmlspecialchars($prefixLabel) ?></code>
+        </span>
+
         <span class="sub-col col-address">
-          <a href="<?= htmlspecialchars($sub['address']) ?>" target="_blank" rel="noopener"
+          <a href="<?= htmlspecialchars($fullUrl) ?>" target="_blank" rel="noopener"
              class="sub-addr">
-            <?= htmlspecialchars($sub['address']) ?>
+            <?= htmlspecialchars($displayUrl) ?>
             <?= extIcon() ?>
           </a>
         </span>
 
         <span class="sub-col col-name">
-          <?= htmlspecialchars($sub['name'] ?? '') ?>
+          <?= $subName ? htmlspecialchars($subName) : '<span class="sub-empty">—</span>' ?>
         </span>
 
         <span class="sub-col col-desc">
-          <?= htmlspecialchars($sub['description'] ?? '') ?>
+          <?= $subDesc ? htmlspecialchars($subDesc) : '<span class="sub-empty">—</span>' ?>
         </span>
 
         <span class="sub-col col-repo">
-          <?php if (!empty($sub['github'])): ?>
-            <a href="<?= htmlspecialchars($sub['github']) ?>" target="_blank" rel="noopener"
-               class="sub-gh-link" title="<?= htmlspecialchars($sub['github']) ?>">
+          <?php if ($subGh): ?>
+            <a href="<?= htmlspecialchars($subGh) ?>" target="_blank" rel="noopener"
+               class="sub-gh-link" title="<?= htmlspecialchars($subGh) ?>">
               <?= ghIcon(13) ?>
+              <span class="sub-gh-slug"><?= htmlspecialchars($ghSlug ?? '') ?></span>
               <?= extIcon() ?>
             </a>
           <?php else: ?>
@@ -172,17 +198,15 @@ $ownerIsMe  = ($domainOwner === null);
           <?php endif; ?>
         </span>
 
-        <span class="sub-col col-status">
+        <span class="sub-col col-live">
           <?php if ($isDeployed): ?>
-            <span class="sub-live">
-              <span class="live-dot"></span>Live
-            </span>
+            <span class="sub-live"><span class="live-dot"></span>Live</span>
           <?php else: ?>
             <span class="sub-offline">Offline</span>
           <?php endif; ?>
         </span>
 
-      </div>
+      </div><!-- /.sub-row -->
       <?php endforeach; ?>
 
     </div><!-- /.sub-table -->

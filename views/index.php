@@ -1,5 +1,5 @@
 <?php
-// $domains, $config, helper functions all available from root index.php
+// $domains, $config, helpers all available from root index.php
 ?>
 
 <div class="hero">
@@ -26,10 +26,12 @@
 <div class="grid" id="grid">
 
 <?php foreach ($domains as $key => $d):
-  $status = $d['status']      ?? 'active';
-  $from   = fmt($d['from']    ?? null);
-  $to     = $d['to']          ?? null;
-  $desc   = $d['description'] ?? null;
+  $status     = $d['status']       ?? 'active';
+  $from       = fmt($d['from']     ?? null);
+  $to         = $d['to']           ?? null;
+  $desc       = $d['description']  ?? null;
+  $subdomains = $d['subdomains']   ?? null;
+  $subCount   = !empty($subdomains) ? count($subdomains) : 0;
 ?>
   <a class="card <?= $status ?>"
      href="<?= durl($key) ?>"
@@ -38,7 +40,21 @@
 
     <div class="card-head">
       <span class="card-name"><?= htmlspecialchars($key) ?></span>
-      <?= statusBadge($status) ?>
+      <div class="card-badges">
+        <?php if ($subCount > 0): ?>
+          <span class="badge badge-sub" title="<?= $subCount ?> subdomain<?= $subCount !== 1 ? 's' : '' ?>">
+            <svg xmlns="http://www.w3.org/2000/svg" width="9" height="9" viewBox="0 0 24 24"
+                 fill="none" stroke="currentColor" stroke-width="2.5"
+                 stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="3" width="20" height="14" rx="2"/>
+              <line x1="8" y1="21" x2="16" y2="21"/>
+              <line x1="12" y1="17" x2="12" y2="21"/>
+            </svg>
+            <?= $subCount ?>
+          </span>
+        <?php endif; ?>
+        <?= statusBadge($status) ?>
+      </div>
     </div>
 
     <div class="card-dates">

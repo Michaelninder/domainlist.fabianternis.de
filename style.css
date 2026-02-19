@@ -449,3 +449,33 @@ footer{
   .sub-table{overflow-x:auto}
   .sub-row{min-width:640px}
 }
+
+/* ── Card badge row (status + optional subdomain count) ─────────────────── */
+.card-badges{
+  display:flex;align-items:center;gap:5px;flex-shrink:0;
+}
+
+/* subdomain count badge */
+.badge-sub{
+  display:inline-flex;align-items:center;gap:4px;
+  padding:2px 7px;border-radius:20px;
+  background:var(--accent-dim);
+  border:1px solid rgba(124,110,255,.22);
+  color:var(--accent);
+  font-size:.62rem;font-weight:600;letter-spacing:.04em;
+  white-space:nowrap;
+}
+
+/* prefix code pill in subdomain table */
+.sub-prefix-code{
+  font-family:var(--mono);font-size:.74rem;font-weight:500;
+  color:var(--accent);
+  background:var(--accent-dim);
+  border:1px solid rgba(124,110,255,.18);
+  border-radius:5px;padding:2px 8px;
+  letter-spacing:.02em;
+}
+
+/* Prefix column width */
+.sub-row{ grid-template-columns: 80px 200px 130px 1fr 150px 60px; }
+.col-prefix{ justify-content:center; }
