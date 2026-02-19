@@ -5,14 +5,14 @@ declare(strict_types=1);
 $config  = require __DIR__ . '/config.php';
 $domains = $config['domains'];
 
-// ── Helpers (available to all views) ───────────────────────────────────────
+// ── Helpers (available to all views) ────────────────────────────────────────
 function base(): string {
     $s = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' : 'http';
     return $s . '://' . ($_SERVER['HTTP_HOST'] ?? 'localhost')
          . rtrim(dirname($_SERVER['SCRIPT_NAME']), '/');
 }
-function home(): string  { return base() . '/'; }
-function durl(string $d): string { return base() . '/' . strtolower($d); }
+function home(): string             { return base() . '/'; }
+function durl(string $d): string    { return base() . '/' . strtolower($d); }
 
 function fmt(?string $date): string {
     if (!$date) return '—';
@@ -43,6 +43,15 @@ function ghIcon(int $size = 14): string {
         C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>';
 }
 
+function extIcon(): string {
+    return '<svg xmlns="http://www.w3.org/2000/svg" width="11" height="11"
+        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" style="opacity:.45">
+        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+        <polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
+        </svg>';
+}
+
 function arrowLeft(): string {
     return '<svg xmlns="http://www.w3.org/2000/svg" width="13" height="13"
         viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
@@ -50,19 +59,17 @@ function arrowLeft(): string {
         <path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg>';
 }
 
-// ── Routing ─────────────────────────────────────────────────────────────────
+// ── Routing via REQUEST_URI ──────────────────────────────────────────────────
 $requestUri = $_SERVER['REQUEST_URI'] ?? '/';
-$path = parse_url($requestUri, PHP_URL_PATH) ?? '/';
+$path       = parse_url($requestUri, PHP_URL_PATH) ?? '/';
 
-// Remove base path if script is in a subdirectory
+// Strip base path when running in a subdirectory
 $basePath = rtrim(dirname($_SERVER['SCRIPT_NAME']), '/');
 if ($basePath !== '' && $basePath !== '/' && str_starts_with($path, $basePath)) {
     $path = substr($path, strlen($basePath));
 }
 
 $route = trim($path, '/');
-
-// Remove 'index.php' if present in route
 if ($route === 'index.php') {
     $route = '';
 }
@@ -83,7 +90,7 @@ if ($route !== '') {
     }
 }
 
-// ── Stats (used in header across all views) ─────────────────────────────────
+// ── Stats ────────────────────────────────────────────────────────────────────
 $total   = count($domains);
 $active  = 0;
 $expired = 0;
@@ -91,7 +98,7 @@ foreach ($domains as $d) {
     ($d['status'] ?? 'active') === 'active' ? $active++ : $expired++;
 }
 
-// ── Page title per view ──────────────────────────────────────────────────────
+// ── Page title ───────────────────────────────────────────────────────────────
 $pageTitle = match($view) {
     'show'  => htmlspecialchars($currentDomain) . ' · ' . htmlspecialchars($config['site_title']),
     'error' => '404 · ' . htmlspecialchars($config['site_title']),
@@ -109,7 +116,6 @@ $pageTitle = match($view) {
 </head>
 <body>
 
-<!-- ── Header (shared) ──────────────────────────────────────────────────── -->
 <header>
   <div class="wrap">
     <div class="header-row">
@@ -126,14 +132,12 @@ $pageTitle = match($view) {
   </div>
 </header>
 
-<!-- ── Main content (view-specific) ─────────────────────────────────────── -->
 <main>
   <div class="wrap">
     <?php require __DIR__ . '/views/' . $view . '.php'; ?>
   </div>
 </main>
 
-<!-- ── Footer (shared) ──────────────────────────────────────────────────── -->
 <footer>
   <div class="wrap">
     <div class="footer-row">
