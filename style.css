@@ -340,3 +340,112 @@ footer{
   .meta-grid{grid-template-columns:1fr}
   .stat-row{gap:14px}
 }
+
+/* ── Owner link ──────────────────────────────────────────────────────────── */
+.owner-link{
+  display:inline-flex;align-items:center;gap:5px;
+  color:var(--text);transition:color .15s;
+}
+.owner-link:hover{color:var(--accent)}
+
+/* ── Subdomains section ──────────────────────────────────────────────────── */
+.subdomains-wrap{
+  max-width:960px;
+  margin-top:28px;
+}
+
+.subdomains-title{
+  display:flex;align-items:center;gap:10px;
+  font-family:var(--display);font-size:1.05rem;font-weight:700;
+  letter-spacing:-0.01em;margin-bottom:14px;color:var(--text);
+}
+
+.subdomains-count{
+  display:inline-flex;align-items:center;justify-content:center;
+  background:var(--bg-card);border:1px solid var(--border-soft);
+  color:var(--text-2);font-family:var(--mono);
+  font-size:.68rem;font-weight:500;
+  min-width:22px;height:22px;padding:0 6px;
+  border-radius:20px;
+}
+
+/* table */
+.sub-table{
+  border:1px solid var(--border);
+  border-radius:var(--r-lg);
+  overflow:hidden;
+}
+
+.sub-row{
+  display:grid;
+  grid-template-columns: 220px 150px 1fr 160px 60px;
+  gap:0;
+  border-bottom:1px solid var(--border);
+  transition:background .13s;
+}
+.sub-row:last-child{border-bottom:none}
+.sub-row:not(.sub-head):hover{background:var(--bg-hover)}
+
+.sub-head{
+  background:var(--bg-raised);
+}
+
+.sub-col{
+  padding:11px 14px;
+  font-size:.78rem;
+  display:flex;align-items:center;
+  border-right:1px solid var(--border);
+}
+.sub-col:last-child{border-right:none}
+
+/* head labels */
+.sub-head .sub-col{
+  font-size:.65rem;text-transform:uppercase;
+  letter-spacing:.08em;color:var(--text-3);font-weight:500;
+}
+
+/* address */
+.sub-addr{
+  display:inline-flex;align-items:center;gap:4px;
+  color:var(--accent);font-size:.75rem;
+  word-break:break-all;transition:opacity .15s;
+}
+.sub-addr:hover{opacity:.75}
+
+/* service name */
+.col-name{color:var(--text);font-weight:500}
+
+/* description */
+.col-desc{color:var(--text-2);font-size:.76rem;line-height:1.45}
+
+/* repo link */
+.sub-gh-link{
+  display:inline-flex;align-items:center;gap:5px;
+  color:var(--text-2);font-size:.73rem;
+  transition:color .15s;
+}
+.sub-gh-link:hover{color:var(--accent)}
+.sub-gh-slug{
+  max-width:100px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+}
+.sub-empty{color:var(--text-3)}
+
+/* live / offline badges */
+.sub-live{
+  display:inline-flex;align-items:center;gap:5px;
+  color:var(--green);font-size:.73rem;font-weight:500;
+}
+.live-dot{
+  width:6px;height:6px;border-radius:50%;
+  background:var(--green);flex-shrink:0;
+  animation:blink 2s infinite;
+}
+.sub-offline{
+  color:var(--text-3);font-size:.73rem;
+}
+
+/* ── Responsive: sub-table scrolls on small screens ─────────────────────── */
+@media(max-width:800px){
+  .sub-table{overflow-x:auto}
+  .sub-row{min-width:640px}
+}
