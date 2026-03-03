@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'version'    => '1.4.2',
+    'version'    => '1.4.3',
     'site_title' => 'Domain List',
     'owner'      => 'Fabian Ternis',
 
@@ -248,7 +248,39 @@ return [
         'xpsystems.eu' => [
             'from' => null, 'to' => null, 'status' => 'active',
             'description' => null, 'note' => null, 'github_url' => null,
-            'owner' => null, 'github_owner' => null, 'subdomains' => null,
+            'owner' => null, 'github_owner' => null,
+            'subdomains' => [
+                '@' => [
+                    'name'        => 'Landingpage',
+                    'description' => null,
+                    'github'      => null,
+                    'is_deployed' => true,
+                ],
+                'status' => [
+                    'name'        => 'System Status',
+                    'description' => null,
+                    'github'      => null,
+                    'is_deployed' => true,
+                ],
+                'domains' => [
+                    'name'        => 'Domains List',
+                    'description' => null,
+                    'github'      => null,
+                    'is_deployed' => true,
+                ],
+                'opensource' => [
+                    'name'        => 'Information',
+                    'description' => null,
+                    'github'      => null,
+                    'is_deployed' => true,
+                ],
+                'webmail' => [
+                    'name'        => 'Webmailing',
+                    'description' => null,
+                    'github'      => null,
+                    'is_deployed' => true,
+                ],
+            ],
         ],
         'xpsys.de' => [
             'from' => null, 'to' => null, 'status' => 'active',
@@ -523,24 +555,47 @@ return [
             'from' => null, 'to' => null, 'status' => 'active',
             'description' => 'Personal developer domain.',
             'note' => null, 'github_url' => null,
-            'owner' => null, 'github_owner' => null, 'subdomains' => null,
+            'owner' => null, 'github_owner' => null,
+            'subdomains' => [
+                '@' => [
+                    'name'        => 'Portfolio',
+                    'description' => null,
+                    'github'      => null,
+                    'is_deployed' => true,
+                ],
+                'work' => [
+                    'name'        => 'Portfolio',
+                    'description' => 'Portfolio with images of some of the sites created.',
+                    'github'      => null,
+                    'is_deployed' => true,
+                ],
+            ],
         ],
         'fabianternis.de' => [
             'from' => null, 'to' => null, 'status' => 'active',
             'description' => 'Main personal domain.',
             'note' => null, 'github_url' => null,
-            'owner' => null, 'github_owner' => null, 'subdomains' => null,
+            'owner' => null, 'github_owner' => null,
+            'subdomains' => [
+                '@' => [
+                    'name'        => 'Playful Portfolio',
+                    'description' => null,
+                    'github'      => null,
+                    'is_deployed' => true,
+                ],
+                'domainlist' => [
+                    'name'        => 'Domain List',
+                    'description' => null,
+                    'github'      => null,
+                    'is_deployed' => true,
+                ],
+            ],
         ],
         'pleasehireme.eu' => [
             'from' => null, 'to' => null, 'status' => 'active',
             'description' => null, 'note' => null, 'github_url' => null,
             'owner' => null, 'github_owner' => null, 'subdomains' => null,
         ],
-        /*'pleasehireme.de' => [
-            'from' => null, 'to' => null, 'status' => 'active',
-            'description' => null, 'note' => null, 'github_url' => null,
-            'owner' => null, 'github_owner' => null, 'subdomains' => null,
-        ],*/
         'getmy.name' => [
             'from' => null, 'to' => null, 'status' => 'active',
             'description' => null, 'note' => null, 'github_url' => null,
@@ -632,14 +687,72 @@ return [
         'ternis.eu' => [
             'from' => null, 'to' => null, 'status' => 'active',
             'description' => null, 'note' => null,
-            'github_url'   => 'https://github.com/ternis-eu',
-            'owner'        => null, 'github_owner' => null, 'subdomains' => null,
+            'github_url'   => null,
+            'owner'        => null, 'github_owner' => null,
+            'subdomains' => [
+                '@' => [
+                    'name'        => 'Linktree',
+                    'description' => 'Overall Linktree for all family members.',
+                    'github'      => null,
+                    'is_deployed' => true,
+                ],
+                'fabian' => [
+                    'name'        => 'Fabian',
+                    'description' => 'Portfolio and link stuff for Fabian.',
+                    'github'      => null,
+                    'is_deployed' => true,
+                ],
+                'ivo' => [
+                    'name'        => 'Ivo',
+                    'description' => 'Linktree for Ivo Ternis.',
+                    'github'      => null,
+                    'is_deployed' => true,
+                ],
+                'lia' => [
+                    'name'        => 'Lia',
+                    'description' => 'Linktree for Lia Ternis.',
+                    'github'      => null,
+                    'is_deployed' => true,
+                ],
+                'ellenie' => [
+                    'name'        => 'Ellenie',
+                    'description' => 'Linktree for Ellenie.',
+                    'github'      => null,
+                    'is_deployed' => true,
+                ],
+            ],
         ],
         'xpsystems.de' => [
             'from' => null, 'to' => null, 'status' => 'active',
             'description' => null, 'note' => null,
             'github_url'   => 'https://github.com/xpsystems',
-            'owner'        => null, 'github_owner' => null, 'subdomains' => null,
+            'owner'        => null, 'github_owner' => null,
+            'subdomains' => [
+                '@' => [
+                    'name'        => 'Landingpage',
+                    'description' => null,
+                    'github'      => null,
+                    'is_deployed' => true,
+                ],
+                'status' => [
+                    'name'        => 'System Status',
+                    'description' => null,
+                    'github'      => null,
+                    'is_deployed' => true,
+                ],
+                'domains' => [
+                    'name'        => 'Domains List',
+                    'description' => null,
+                    'github'      => null,
+                    'is_deployed' => true,
+                ],
+                'opensource' => [
+                    'name'        => 'Information',
+                    'description' => null,
+                    'github'      => null,
+                    'is_deployed' => true,
+                ],
+            ],
         ],
         'eu-data.org' => [
             'from' => null, 'to' => null, 'status' => 'active',
