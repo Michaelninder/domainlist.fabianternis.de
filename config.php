@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'version'    => '1.4.1',
+    'version'    => '1.4.2',
     'site_title' => 'Domain List',
     'owner'      => 'Fabian Ternis',
 
@@ -38,7 +38,6 @@ return [
     */
 
     'domains' => [
-
         'xp-craft.de' => [
             'from' => '2024-06-28', 'to' => '2025-07-01', 'status' => 'expired',
             'description' => 'XP-Craft.de Minecraft Servernetwork', 'note' => null, 'github_url' => null,
@@ -284,57 +283,57 @@ return [
             'owner' => null, 'github_owner' => null, 'subdomains' => null,
         ],
         'schulchat-rlp.de' => [
-            'from' => null, 'to' => null, 'status' => 'active',
+            'from' => null, 'to' => null, 'status' => 'expired',
             'description' => null, 'note' => null, 'github_url' => null,
             'owner' => null, 'github_owner' => null, 'subdomains' => null,
         ],
         'nerax.eu' => [
-            'from' => null, 'to' => null, 'status' => 'active',
+            'from' => null, 'to' => null, 'status' => 'expired',
             'description' => null, 'note' => null, 'github_url' => null,
             'owner' => null, 'github_owner' => null, 'subdomains' => null,
         ],
         'anlink.eu' => [
-            'from' => null, 'to' => null, 'status' => 'active',
+            'from' => null, 'to' => null, 'status' => 'expired',
             'description' => null, 'note' => null, 'github_url' => null,
             'owner' => null, 'github_owner' => null, 'subdomains' => null,
         ],
         'mchost24.eu' => [
-            'from' => null, 'to' => null, 'status' => 'active',
+            'from' => null, 'to' => null, 'status' => 'expired',
             'description' => null, 'note' => null, 'github_url' => null,
             'owner' => null, 'github_owner' => null, 'subdomains' => null,
         ],
         '24mc.eu' => [
-            'from' => null, 'to' => null, 'status' => 'active',
+            'from' => null, 'to' => null, 'status' => 'expired',
             'description' => null, 'note' => null, 'github_url' => null,
             'owner' => null, 'github_owner' => null, 'subdomains' => null,
         ],
         'schulkampus-rlp.de' => [
-            'from' => null, 'to' => null, 'status' => 'active',
+            'from' => null, 'to' => null, 'status' => 'expired',
             'description' => null, 'note' => null, 'github_url' => null,
             'owner' => null, 'github_owner' => null, 'subdomains' => null,
         ],
         'bildungslogin-rlp.de' => [
-            'from' => null, 'to' => null, 'status' => 'active',
+            'from' => null, 'to' => null, 'status' => 'expired',
             'description' => null, 'note' => null, 'github_url' => null,
             'owner' => null, 'github_owner' => null, 'subdomains' => null,
         ],
         'xp-mail.eu' => [
-            'from' => null, 'to' => null, 'status' => 'active',
+            'from' => null, 'to' => null, 'status' => 'expired',
             'description' => null, 'note' => null, 'github_url' => null,
             'owner' => null, 'github_owner' => null, 'subdomains' => null,
         ],
         'pythonhub.eu' => [
-            'from' => null, 'to' => null, 'status' => 'active',
+            'from' => null, 'to' => null, 'status' => 'expired',
             'description' => null, 'note' => null, 'github_url' => null,
             'owner' => null, 'github_owner' => null, 'subdomains' => null,
         ],
         'xmage.eu' => [
-            'from' => null, 'to' => null, 'status' => 'active',
+            'from' => null, 'to' => null, 'status' => 'expired',
             'description' => null, 'note' => null, 'github_url' => null,
             'owner' => null, 'github_owner' => null, 'subdomains' => null,
         ],
         'imagu.eu' => [
-            'from' => null, 'to' => null, 'status' => 'active',
+            'from' => null, 'to' => null, 'status' => 'expired',
             'description' => null, 'note' => null, 'github_url' => null,
             'owner' => null, 'github_owner' => null, 'subdomains' => null,
         ],
@@ -346,12 +345,12 @@ return [
             'owner'        => null, 'github_owner' => null, 'subdomains' => null,
         ],
         'swiftshare.eu' => [
-            'from' => null, 'to' => null, 'status' => 'active',
+            'from' => null, 'to' => null, 'status' => 'expired',
             'description' => null, 'note' => null, 'github_url' => null,
             'owner' => null, 'github_owner' => null, 'subdomains' => null,
         ],
         'pyshop.de' => [
-            'from' => null, 'to' => null, 'status' => 'active',
+            'from' => null, 'to' => null, 'status' => 'expired',
             'description' => null, 'note' => null, 'github_url' => null,
             'owner' => null, 'github_owner' => null, 'subdomains' => null,
         ],
@@ -458,7 +457,6 @@ return [
             'owner'        => 'MTEX-dev',
             'github_owner' => 'https://github.com/MTEX-dev',
             'subdomains'   => [
-                // key '@' = the apex domain itself (https://mtex.dev)
                 '@' => [
                     'name'        => 'Landingpage',
                     'description' => 'Our main landingpage.',
@@ -538,6 +536,11 @@ return [
             'description' => null, 'note' => null, 'github_url' => null,
             'owner' => null, 'github_owner' => null, 'subdomains' => null,
         ],
+        /*'pleasehireme.de' => [
+            'from' => null, 'to' => null, 'status' => 'active',
+            'description' => null, 'note' => null, 'github_url' => null,
+            'owner' => null, 'github_owner' => null, 'subdomains' => null,
+        ],*/
         'getmy.name' => [
             'from' => null, 'to' => null, 'status' => 'active',
             'description' => null, 'note' => null, 'github_url' => null,
@@ -656,6 +659,10 @@ return [
             'github_url'   => 'https://github.com/web-searchorg',
             'owner'        => null, 'github_owner' => null, 'subdomains' => null,
         ],
-
+        'pleasehireme.de' => [
+            'from' => null, 'to' => null, 'status' => 'active',
+            'description' => null, 'note' => null, 'github_url' => null,
+            'owner' => null, 'github_owner' => null, 'subdomains' => null,
+        ],
     ],
 ];
