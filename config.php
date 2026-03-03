@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'version'    => '1.4.4',
+    'version'    => '1.4.5',
     'site_title' => 'Domain List',
     'owner'      => 'Fabian Ternis',
 
@@ -9,32 +9,6 @@ return [
     |--------------------------------------------------------------------------
     | Domain entries
     |--------------------------------------------------------------------------
-    | Each entry supports:
-    |   'from'         => 'YYYY-MM-DD' | null
-    |   'to'           => 'YYYY-MM-DD' | null   (null = Present)
-    |   'status'       => 'active' | 'expired'
-    |   'description'  => string | null
-    |   'note'         => string | null
-    |   'github_url'   => string | null
-    |   'owner'        => string | null          if different from site owner
-    |   'github_owner' => string | null          GitHub profile URL of the owner
-    |   'subdomains'   => array | null           keyed by subdomain prefix, e.g.:
-    |       [
-    |           // key = subdomain prefix  →  https://{key}.{domain}
-    |           // use '@' for the apex/root itself
-    |           '@' => [
-    |               'name'        => string | null,
-    |               'description' => string | null,
-    |               'github'      => string | null,
-    |               'is_deployed' => bool,        // optional, default true
-    |           ],
-    |           'status' => [
-    |               'name'        => 'Status Page',
-    |               'description' => 'System status dashboard.',
-    |               'github'      => 'https://github.com/org/repo',
-    |               'is_deployed' => true,
-    |           ],
-    |       ]
     */
 
     'domains' => [
@@ -69,17 +43,17 @@ return [
             'owner' => null, 'github_owner' => null, 'subdomains' => null,
         ],
         'michaelninder.de' => [
-            'from' => '2024-11-29', 'to' => '2026-11-29', 'status' => 'expired',
+            'from' => '2024-11-29', 'to' => '2026-11-29', 'status' => 'active',
             'description' => null, 'note' => null, 'github_url' => null,
             'owner' => null, 'github_owner' => null, 'subdomains' => null,
         ],
         'xp-link.de' => [
-            'from' => null, 'to' => null, 'status' => 'expired',
+            'from' => '2024-11-29', 'to' => null, 'status' => 'expired',
             'description' => null, 'note' => null, 'github_url' => null,
             'owner' => null, 'github_owner' => null, 'subdomains' => null,
         ],
         'dogwaterdev.de' => [
-            'from'         => null,
+            'from'         => '2024-11-29',
             'to'           => '2027-01-19',
             'status'       => 'active',
             'description'  => 'Personal domain for DogWaterDev. Re-registered after initial expiry.',
@@ -90,37 +64,37 @@ return [
             'subdomains'   => null,
         ],
         'xp-node.de' => [
-            'from' => null, 'to' => null, 'status' => 'expired',
+            'from' => '2024-11-30', 'to' => null, 'status' => 'expired',
             'description' => null, 'note' => null, 'github_url' => null,
             'owner' => null, 'github_owner' => null, 'subdomains' => null,
         ],
         'dexify.eu' => [
-            'from' => null, 'to' => null, 'status' => 'expired',
+            'from' => '2024-11-30', 'to' => null, 'status' => 'expired',
             'description' => null, 'note' => null, 'github_url' => null,
             'owner' => null, 'github_owner' => null, 'subdomains' => null,
         ],
         'xp-cloud.eu' => [
-            'from' => null, 'to' => null, 'status' => 'expired',
+            'from' => '2024-12-02', 'to' => null, 'status' => 'expired',
             'description' => null, 'note' => null, 'github_url' => null,
             'owner' => null, 'github_owner' => null, 'subdomains' => null,
         ],
         'code-trainer.de' => [
-            'from' => null, 'to' => null, 'status' => 'expired',
+            'from' => '2024-12-08', 'to' => null, 'status' => 'expired',
             'description' => null, 'note' => null, 'github_url' => null,
             'owner' => null, 'github_owner' => null, 'subdomains' => null,
         ],
         'a-sub.de' => [
-            'from' => null, 'to' => null, 'status' => 'expired',
+            'from' => '2024-12-10', 'to' => null, 'status' => 'expired',
             'description' => null, 'note' => null, 'github_url' => null,
             'owner' => null, 'github_owner' => null, 'subdomains' => null,
         ],
         'b-sub.de' => [
-            'from' => null, 'to' => null, 'status' => 'expired',
+            'from' => '2024-12-10', 'to' => null, 'status' => 'expired',
             'description' => null, 'note' => null, 'github_url' => null,
             'owner' => null, 'github_owner' => null, 'subdomains' => null,
         ],
         'hhgkl.de' => [
-            'from' => null, 'to' => null, 'status' => 'expired',
+            'from' => '2024-12-11', 'to' => null, 'status' => 'expired',
             'description' => null, 'note' => null, 'github_url' => null,
             'owner' => null, 'github_owner' => null, 'subdomains' => null,
         ],
@@ -135,22 +109,22 @@ return [
             'owner' => null, 'github_owner' => null, 'subdomains' => null,
         ],
         'bank-of-europe.eu' => [
-            'from' => null, 'to' => null, 'status' => 'expired',
+            'from' => '2024-12-17', 'to' => null, 'status' => 'expired',
             'description' => null, 'note' => null, 'github_url' => null,
             'owner' => null, 'github_owner' => null, 'subdomains' => null,
         ],
         'craftattack.xyz' => [
-            'from' => null, 'to' => null, 'status' => 'expired',
+            'from' => '2024-12-25', 'to' => null, 'status' => 'expired',
             'description' => null, 'note' => null, 'github_url' => null,
             'owner' => null, 'github_owner' => null, 'subdomains' => null,
         ],
         'euromc.eu' => [
-            'from' => null, 'to' => null, 'status' => 'expired',
+            'from' => '2024-12-29', 'to' => null, 'status' => 'expired',
             'description' => null, 'note' => null, 'github_url' => null,
             'owner' => null, 'github_owner' => null, 'subdomains' => null,
         ],
         'xp-h.de' => [
-            'from' => null, 'to' => null, 'status' => 'expired',
+            'from' => '2024-12-30', 'to' => null, 'status' => 'expired',
             'description' => null, 'note' => null, 'github_url' => null,
             'owner' => null, 'github_owner' => null, 'subdomains' => null,
         ],
@@ -166,7 +140,7 @@ return [
             'subdomains'   => null,
         ],
         'europehost.eu' => [
-            'from' => null, 'to' => '2027-01-02', 'status' => 'active',
+            'from' => '2025-01-02', 'to' => '2027-01-02', 'status' => 'active',
             'description' => null, 'note' => null, 'github_url' => null,
             'owner' => null, 'github_owner' => null, 'subdomains' => null,
         ],
